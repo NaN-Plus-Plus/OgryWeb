@@ -11,7 +11,7 @@ let colCount = 0;
 
 function sweep(cls) {
   wipe.className = 'wipe';
-  void wipe.offsetWidth; 
+  void wipe.offsetWidth;
   wipe.classList.add(cls);
 }
 
@@ -80,28 +80,28 @@ const days = [
     ["13:00", "Otwarcie wystaw gier", "", "Hol"],
     ["13:15", "Rozpoczęcie gry terenowej", "", "1.47"],
     ["14:30", "Oficjalne otwarcie wydarzenia", "", "1.43"],
-    ["14:50", "Temat:", "---", "1.43"],
-    ["15:30", "Temat:", "---", "1.43"],
-    ["16:10", "Temat:", "---", "1.43"],
+    ["14:50", "TBA", "TBA", "1.43"],
+    ["15:30", "TBA", "TBA", "1.43"],
+    ["16:10", "TBA", "TBA", "1.43"],
     ["16:20", "Zakończenie gry terenowej", "", "1.47"],
     ["16:50", "Odsłonięcie rzeźby", "", "Patio"],
     ["17:20", "Warsztat tłumacza a rosnąca rola AI - czy jest się czego bać?", "Jan Marcinkowski", "1.43"],
     ["18:00", "Groza, która nie krzyczy. O pisaniu horroru przez milczenie.", "Aleks Boniewski", "1.43"],
-    ["18:40", "---", "Paulina Michałowska", "1.43"],
-    ["19:20", "---", "Panel dyskusyjny", "1.43"],
+    ["18:40", "TBA", "Paulina Michałowska", "1.43"],
+    ["19:20", "TBA", "Panel dyskusyjny", "1.43"],
     ["20:00", "Zakończenie wydarzenia", "", "1.43"]
   ]
 ];
 
 const speakers = [
-  ["Jan Marcinkowski", "Warsztat tłumacza a rosnąca rola AI - czy jest się czego bać?", "Absolwent Filologii Angielskiej UG, wieloletni tłumacz gier wideo i planszowych z doświadczeniem w tłumaczeniach oprogramowania oraz list dialogowych dla filmów i seriali, współautor książki o analizie w grywalizacji pt. 'Przywilej Korzyści'. Doświadczony kierownik zespołu obsługi klienta w dużej polskiej firmie IT - GetResponse, która świadczy usługi ułatwiające firmom prowadzenie działalności. Zwolennik idei, że słowa naprawdę mają znaczenie."],
-  ["Paulina Michałowska", "---", "---"],
-  ["Aleks Boniewski", "Groza, która nie krzyczy. O pisaniu horroru przez milczenie.", "Narrative Designer w Triphobia Studio. Składa świat Nightmare Loop w spójną opowieść i pilnuje kontaktu z graczami. Fan grozy, która nie krzyczy: tylko przestawia meble, kiedy nie patrzysz."]
+  ["Jan Marcinkowski", "Warsztat tłumacza a rosnąca rola AI - czy jest się czego bać?", "Absolwent Filologii Angielskiej UG, wieloletni tłumacz gier wideo i planszowych z doświadczeniem w tłumaczeniach oprogramowania oraz list dialogowych dla filmów i seriali, współautor książki o analizie w grywalizacji pt. 'Przywilej Korzyści'. Doświadczony kierownik zespołu obsługi klienta w dużej polskiej firmie IT - GetResponse, która świadczy usługi ułatwiające firmom prowadzenie działalności. Zwolennik idei, że słowa naprawdę mają znaczenie.", "img/photos/JM.png"],
+  ["Paulina Michałowska", "TBA", "TBA", ""],
+  ["Aleks Boniewski", "Groza, która nie krzyczy. O pisaniu horroru przez milczenie.", "Narrative Designer w Triphobia Studio. Składa świat Nightmare Loop w spójną opowieść i pilnuje kontaktu z graczami. Fan grozy, która nie krzyczy: tylko przestawia meble, kiedy nie patrzysz.", "img/photos/AB.png"]
 ];
 
 const archive = [
-  ["", "", "", []],
-  ["", "", "", []]
+  ["TBA", "TBA", "TBA", []],
+  ["TBA", "TBA", "TBA", []]
 ];
 
 const tile = text => `<div class="ph">${text}</div>`;
@@ -136,7 +136,7 @@ const cards = speakers.map(s => {
   const card = document.createElement('article');
   card.className = 'card';
   card.innerHTML = `
-    <div class="avatar" aria-hidden="true">${s[0][0]}</div>
+    <div class="avatar" aria-hidden="true">${s[3] ? `<img src="${s[3]}" alt="" onerror="this.replaceWith('${s[0][0]}')">` : s[0][0]}</div>
     <div class="b">
       <h4>${s[0]}</h4>
       <p class="role mono">${s[1]}</p>
