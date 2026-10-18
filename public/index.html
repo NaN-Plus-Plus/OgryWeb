@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<link rel="icon" href="img/logos/favicon.svg" type="image/svg+xml">
+	<title>OGRY</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Barlow:wght@400;600&family=Fira+Code:wght@500&display=swap">
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<div class="wipe" id="wipe" aria-hidden="true"></div>
+
+	<div class="track" id="track">
+
+		<section class="side l" id="sideL" inert aria-label="Strony po lewej">
+			<div class="bar">
+				<button class="back" data-back aria-label="Wróć do strony głównej">→</button>
+				<h2 class="ptitle"></h2>
+			</div>
+
+			<article class="page" id="event" hidden data-title="O wydarzeniu">
+				<p class="lead">Czym są OGRY?</p>
+				<p>OGRY to seria mini konferencji naukowo-branżowych na temat gier cyfrowych oraz analogowych. To cykliczne spotkania miłośników gier, na które zapraszane będą specjaliści z branży growej.</p>
+				<p class="lead">Do kogo skierowane są OGRY?</p>
+				<p>OGRY skierowane są głównie do osób, które stawiają pierwsze kroki w branży gamingowej oraz tworzą własne projekty. Do udziału w konferencjach zapraszamy także tych, którzy dopiero chcą wejść na tę ścieżkę kariery. W wydarzeniu będą mogły również brać udział osoby interesujące się i zajmujące grami hobbystycznie. Swoją ofertę kierujemy do studentów oraz uczniów szkół średnich, by pokazać im świat gier od środka.</p>
+				<p class="lead">Jaki jest plan wydarzeń OGRÓW?</p>
+				<p>Konferencje OGRY będą organizowane 3 razy w semestrze. Każde spotkanie z cyklu OGRY będzie składać się z prelekcji prowadzonych przez specjalistów ze swojej dziedziny. W ramach programu edukacyjnego przewidziane są także warsztaty, panele dyskusyjne oraz wydarzenia społecznościowe. Ma być to miejsce spotkań osób zainteresowanych oraz tworzenia się nowego pokolania twórców gier. Na każdej z mini konferencji OGRÓW uczestnicy będą mieli możliwość poszerzenia swojej wiedzy dotyczącej różnych aspektów pracy w branży game dev. To także szansa na poznanie dynamiki funkcjonowania gier z nieznanej dotychczas perspektywy, wraz z uwzględnieniem szczegółów i sekretów niedostępnych dla zwykłych obserwatorów.</p>
+			</article>
+
+			<article class="page" id="program" hidden data-title="Program">
+				<div class="tabs" role="tablist" aria-label="Dni festiwalu">
+					<button role="tab" aria-selected="true" data-day="0">6.11</button>
+				</div>
+				<div id="slots" aria-live="polite"></div>
+			</article>
+
+			<article class="page" id="speakers" hidden data-title="Prelegenci">
+				<div class="people" id="people"></div>
+			</article>
+		</section>
+
+		<main class="home" id="home">
+			<div class="checker" aria-hidden="true"></div>
+
+			<div class="stage">
+				<nav class="menu l" aria-label="Menu">
+					<button class="btn" data-open="event" data-side="l">
+						<i class="mono">01</i><b>O wydarzeniu</b><span>kiedy, gdzie, po co</span>
+					</button>
+					<button class="btn" data-open="program" data-side="l">
+						<i class="mono">02</i><b>Program</b><span>co, kiedy i jak</span>
+					</button>
+					<button class="btn" data-open="speakers" data-side="l">
+						<i class="mono">03</i><b>Prelegenci</b><span>kto wystąpi</span>
+					</button>
+				</nav>
+
+				<div class="mid">
+					<span class="typo" style="--src:url(img/logos/napis.svg)"></span>
+					<img class="mark" src="img/logos/logo.svg">
+				</div>
+
+				<nav class="menu r" aria-label="Menu">
+					<button class="btn" data-open="gallery" data-side="r">
+						<i class="mono">04</i><b>Galeria</b><span>zdjęcia z festiwalu</span>
+					</button>
+					<button class="btn" data-open="archive" data-side="r">
+						<i class="mono">05</i><b>Archiwum</b><span>poprzednie edycje</span>
+					</button>
+					<button class="btn" data-open="contact" data-side="r">
+						<i class="mono">06</i><b>Kontakt</b><span>napisz do nas</span>
+					</button>
+				</nav>
+			</div>
+
+			<div class="plaque">
+				<span class="cap mono">organizatorzy</span>
+				<div class="row">
+					<span class="lg nan" style="--src:url(img/logos/nan.svg)"></span>
+					<span class="sep"></span>
+					<span class="lg ugr" style="--src:url(img/logos/ugrane.svg)"></span>
+					<span class="sep"></span>
+					<span class="lg cas" style="--src:url(img/logos/casid.png)"></span>
+				</div>
+			</div>
+		</main>
+
+		<section class="side r" id="sideR" inert aria-label="Strony po prawej">
+			<div class="bar">
+				<button class="back" data-back aria-label="Wróć do strony głównej">←</button>
+				<h2 class="ptitle"></h2>
+			</div>
+
+			<article class="page" id="gallery" hidden data-title="Galeria">
+				<div class="grid" id="ggrid"></div>
+			</article>
+
+			<article class="page" id="archive" hidden data-title="Archiwum">
+				<div id="arch"></div>
+			</article>
+
+			<article class="page" id="contact" hidden data-title="Kontakt">
+				<dl>
+					<dt class="mono">Email:</dt>
+					<dd><a href="mailto:ugranie@studms.ug.edu.pl">ugranie@studms.ug.edu.pl</a></dd>
+					<dt class="mono">Social media:</dt>
+					<dd>
+						<a href="https://www.instagram.com/uniwersyteckiegranie" target="_blank">Ugrane</a> ·
+						<a href="https://nanweb.pages.dev/" target="_blank">Nan++</a>
+					</dd>
+				</dl>
+			</article>
+		</section>
+
+	</div>
+</body>
+</html>
