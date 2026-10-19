@@ -85,9 +85,9 @@ const days = [
     ["16:10", "TBA", "TBA", "1.43"],
     ["16:20", "Zakończenie gry terenowej", "", "1.47"],
     ["16:50", "Odsłonięcie rzeźby", "", "Patio"],
-    ["17:20", "Warsztat tłumacza a rosnąca rola AI - czy jest się czego bać?", "Jan Marcinkowski", "1.43"],
+    ["17:20", "Gry niezależne językowo - Czy to się opłaca?", "Paulina Michałowska", "1.43"],
     ["18:00", "Groza, która nie krzyczy. O pisaniu horroru przez milczenie.", "Aleks Boniewski", "1.43"],
-    ["18:40", "TBA", "Paulina Michałowska", "1.43"],
+    ["18:40", "Warsztat tłumacza a rosnąca rola AI - czy jest się czego bać?", "Jan Marcinkowski", "1.43"],
     ["19:20", "TBA", "Panel dyskusyjny", "1.43"],
     ["20:00", "Zakończenie wydarzenia", "", "1.43"]
   ]
@@ -95,7 +95,7 @@ const days = [
 
 const speakers = [
   ["Jan Marcinkowski", "Warsztat tłumacza a rosnąca rola AI - czy jest się czego bać?", "Absolwent Filologii Angielskiej UG, wieloletni tłumacz gier wideo i planszowych z doświadczeniem w tłumaczeniach oprogramowania oraz list dialogowych dla filmów i seriali, współautor książki o analizie w grywalizacji pt. 'Przywilej Korzyści'. Doświadczony kierownik zespołu obsługi klienta w dużej polskiej firmie IT - GetResponse, która świadczy usługi ułatwiające firmom prowadzenie działalności. Zwolennik idei, że słowa naprawdę mają znaczenie.", "img/photos/JM.png"],
-  ["Paulina Michałowska", "TBA", "TBA", ""],
+  ["Paulina Michałowska", "Gry niezależne językowo - Czy to się opłaca?", "Head of Creative w Winning Moves | Projektantka gier & Wykładowczyni. Od niemal dekady związana z branżą gier planszowych i zabawek. Jako Head of Creative w Winning Moves odpowiada za development gier planszowych, karcianych i puzzli – od konceptu po produkcję. Od 9 lat współpracuje z Sirius Game Studio. Na Uniwersytecie Gdańskim uczy pierwszych kroków w projektowaniu gier oraz zarządzania projektami kreatywnymi. Współautorka innowacji edukacyjnych. Prywatnie fanka gier fabularnych, budowania scenografii i tabelek w Excelu.", "img/photos/PM.png"],
   ["Aleks Boniewski", "Groza, która nie krzyczy. O pisaniu horroru przez milczenie.", "Narrative Designer w Triphobia Studio. Składa świat Nightmare Loop w spójną opowieść i pilnuje kontaktu z graczami. Fan grozy, która nie krzyczy: tylko przestawia meble, kiedy nie patrzysz.", "img/photos/AB.png"]
 ];
 
