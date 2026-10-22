@@ -735,7 +735,10 @@ dd {
   summary b { font-size: 44px; }
 
   .facts { grid-template-columns: 1fr; }
-  .orgs { gap: 14px; }
+  .orgs {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
   .org h3 { font-size: 30px; }
   .org-mail { font-size: 12px; }
   .socials { gap: 8px; }
