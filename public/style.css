@@ -71,7 +71,7 @@ a:hover { color: var(--green); }
   left: 0;
   width: 34vw;
   background: var(--gold);
-  transform: translateX(300vw) skewX(-14deg); 
+  transform: translateX(300vw) skewX(-14deg);
   z-index: 20;
   pointer-events: none;
 }
@@ -168,6 +168,8 @@ a:hover { color: var(--green); }
 .nan { --ar: 2.145; --h: 28px; }
 .ugr { --ar: 0.8;   --h: 54px; }
 .cas { --ar: 1.596; --h: 52px; }
+.dpgw { --ar: 2; --h: 84px; }
+.ipk { --ar: 2; --h: 80px; }
 
 .plaque {
   align-self: center;
@@ -205,6 +207,17 @@ a:hover { color: var(--green); }
   height: 34px;
   background: var(--brown);
 }
+
+.partners {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(22px, 4vw, 48px);
+  margin-top: 40px;
+  color: var(--paper);
+}
+
+.partners .lg { opacity: 0.8; }
 
 .menu {
   display: flex;
@@ -392,8 +405,8 @@ a:hover { color: var(--green); }
   align-items: flex-start;
 }
 
-.people .col {
-  flex: 1;
+.col {
+  flex: 1 1 0;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -401,12 +414,17 @@ a:hover { color: var(--green); }
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  height: auto;
   background: var(--paper);
   color: var(--ink);
   border: 3px solid var(--green);
 }
 
 .avatar {
+  flex: none;
   aspect-ratio: 1.3;
   background: var(--brown);
   display: grid;
@@ -421,38 +439,34 @@ a:hover { color: var(--green); }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 20%;
+  transform: scale(1.1);
 }
 
-.people .card .avatar:has(img) { background: var(--paper); }
-
-.card:nth-child(3n+2) .avatar {
+.card.v1 .avatar {
   background: var(--ink);
   color: var(--green);
 }
 
-.card:nth-child(3n) .avatar {
+.card.v2 .avatar {
   background: var(--gold);
   color: var(--ink);
 }
 
 .card:nth-child(n) .avatar:has(img) {
   background: none;
-  aspect-ratio: 1 / 1;      
+  aspect-ratio: 1 / 1;
   display: block;
 }
 
-.card .avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;        
-  object-position: center 20%;
-  transform: scale(1.1);   
+.card .b {
+  display: flex;
+  flex-direction: column;
+  min-height: 230px;
+  padding: 12px 16px 16px;
 }
 
-.card .b { padding: 12px 16px 16px; }
-
-.card h4 { 
+.card h4 {
   font-size: 27px;
   padding-bottom: 5%;
 }
@@ -469,6 +483,8 @@ a:hover { color: var(--green); }
   text-decoration: underline;
   font-weight: 600;
   font-size: 16px;
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 .card button:hover { color: var(--brown); }
@@ -477,7 +493,7 @@ a:hover { color: var(--green); }
 .bio {
   display: none;
   font-size: 16px;
-  margin: 8px 0 0;
+  margin: 12px 0 0;
 }
 
 .card.open .bio { display: block; }
@@ -717,6 +733,8 @@ dd {
   .nan { --h: 18px; }
   .ugr { --h: 34px; }
   .cas { --h: 34px; }
+  .dpgw { --h: 60px; }
+  .ipk { --h: 56px; }
 
   .slot { grid-template-columns: 68px 1fr; }
 

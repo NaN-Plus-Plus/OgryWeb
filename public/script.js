@@ -7,7 +7,6 @@ const sides = { l: $('#sideL'), r: $('#sideR') };
 let cur = null;
 let side = null;
 let busy = false;
-let colCount = 0;
 
 function sweep(cls) {
   wipe.className = 'wipe';
@@ -28,11 +27,6 @@ function openPage(id, s) {
   const panel = sides[s];
   panel.querySelector('.ptitle').textContent = $('#' + id).dataset.title;
   panel.scrollTop = 0;
-
-  if (id === 'speakers') {
-    colCount = 0;
-    layoutPeople();
-  }
 
   panel.inert = false;
   $('#home').inert = true;
@@ -77,15 +71,16 @@ addEventListener('keydown', e => {
 
 const days = [
   [
-    ["13:00", "Rozpoczęcie wydarzenia", "", "1.43"],
+    ["13:00", "Rozpoczęcie wydarzenia i otwarcie wystawy Komunikacja Niewerbalna w Grach.", "", "Hol"],
     ["13:15", "Realia historyczne w grach bitewnych.", "Maciej Król", "1.43"],
-    ["15:00", "TBA", "", "1.43"],
+    ["14:00", "Polska edycja Bolt Action.", "Maciej Król", "1.43"],
+    ["15:30", "The history of Lingo.", "Brenton Wildes", "1.43"],
     ["16:00", "TBA", "", "1.43"],
     ["17:20", "Gry niezależne językowo - Czy to się opłaca?", "Paulina Michałowska", "1.43"],
     ["18:00", "Groza, która nie krzyczy. O pisaniu horroru przez milczenie.", "Aleks Boniewski", "1.43"],
     ["18:40", "Warsztat tłumacza a rosnąca rola AI - czy jest się czego bać?", "Jan Marcinkowski", "1.43"],
     ["19:20", "Czy przestanie się wydawać gry po polsku?", "Panel dyskusyjny - Paulina Michałowska, Aleks Boniewski, Jan Marcinkowski", "1.43"],
-    ["20:00", "Zakończenie wydarzenia", "", "1.43"]
+    ["20:00", "Zakończenie wydarzenia.", "", "1.43"]
   ]
 ];
 
@@ -94,6 +89,7 @@ const speakers = [
   ["Paulina Michałowska", "Gry niezależne językowo - Czy to się opłaca?", "Head of Creative w Winning Moves | Projektantka gier & Wykładowczyni. Od niemal dekady związana z branżą gier planszowych i zabawek. Jako Head of Creative w Winning Moves odpowiada za development gier planszowych, karcianych i puzzli – od konceptu po produkcję. Od 9 lat współpracuje z Sirius Game Studio. Na Uniwersytecie Gdańskim uczy pierwszych kroków w projektowaniu gier oraz zarządzania projektami kreatywnymi. Współautorka innowacji edukacyjnych. Prywatnie fanka gier fabularnych, budowania scenografii i tabelek w Excelu.", "img/photos/PM.png", "O prelegentce"],
   ["Aleks Boniewski", "Groza, która nie krzyczy. O pisaniu horroru przez milczenie.", "Narrative Designer w Triphobia Studio. Składa świat Nightmare Loop w spójną opowieść i pilnuje kontaktu z graczami. Fan grozy, która nie krzyczy: tylko przestawia meble, kiedy nie patrzysz.", "img/photos/AB.png"],
   ["Maciej Król", "Realia historyczne w grach bitewnych.", "Doświadczony specjalista i weteran branży gier oraz rekonstrukcji historycznej. Z rynkiem gier wargamingowych i bitewnych związany jest od ponad 25 lat, a swoją pasję od ponad dwóch dekad rozwija również w obszarze rekonstrukcji historycznej.", "img/photos/MK.png"],
+  ["Brenton Wildes", "The history of Lingo.", "Brenton Wildes has been a fan of games and puzzles since he was a young child. Creator of Lingo, Lingo 2, and the upcoming title Commune, his games explore the weirdness of language from within a giant puzzle box. Brenton holds a Master's degree in Computer Science. A former educator, he has worked as a software developer for the past decade. He is from Florida, USA, where he lives with his wife and three kids.", "img/photos/BW.png"],
 ];
 
 const archive = [
@@ -150,25 +146,28 @@ const cards = speakers.map(s => {
   return card;
 });
 
-function layoutPeople() {
-  const width = people.clientWidth || innerWidth;
-  const n = Math.max(1, Math.floor((width + 18) / (220 + 18)));
-  if (n === colCount) return;
+cards.forEach((card, i) => card.classList.add('v' + (i % 3)));
 
+let colCount = 0;
+
+function layout() {
+  const w = people.clientWidth;
+  if (!w) return;
+  const n = Math.max(1, Math.floor((w + 18) / 238));
+  if (n === colCount) return;
   colCount = n;
   people.innerHTML = '';
-
   const cols = Array.from({ length: n }, () => {
     const col = document.createElement('div');
     col.className = 'col';
     people.appendChild(col);
     return col;
   });
-
   cards.forEach((card, i) => cols[i % n].appendChild(card));
 }
 
-addEventListener('resize', layoutPeople);
+new ResizeObserver(layout).observe(people);
+layout();
 
 $('#ggrid').innerHTML = ["", "", "", "", "", "", "", "", ""].map(tile).join('');
 
