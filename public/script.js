@@ -71,16 +71,16 @@ addEventListener('keydown', e => {
 
 const days = [
   [
-    ["13:00", "Rozpoczęcie wydarzenia i otwarcie wystawy Komunikacja Niewerbalna w Grach.", "", "Hol"],
-    ["13:15", "Realia historyczne w grach bitewnych.", "Maciej Król", "1.43"],
-    ["14:00", "Polska edycja Bolt Action.", "Maciej Król", "1.43"],
-    ["15:30", "The history of Lingo.", "Brenton Wildes", "1.43"],
-    ["16:00", "TBA", "", "1.43"],
-    ["17:20", "Gry niezależne językowo - Czy to się opłaca?", "Paulina Michałowska", "1.43"],
-    ["18:00", "Groza, która nie krzyczy. O pisaniu horroru przez milczenie.", "Aleks Boniewski", "1.43"],
-    ["18:40", "Warsztat tłumacza a rosnąca rola AI - czy jest się czego bać?", "Jan Marcinkowski", "1.43"],
-    ["19:20", "Czy przestanie się wydawać gry po polsku?", "Panel dyskusyjny - Paulina Michałowska, Aleks Boniewski, Jan Marcinkowski", "1.43"],
-    ["20:00", "Zakończenie wydarzenia.", "", "1.43"]
+    ["13:00", "Rozpoczęcie wydarzenia i otwarcie wystawy Komunikacja Niewerbalna w Grach.", "", "Hol", 0, ""],
+    ["13:15", "Realia historyczne w grach bitewnych.", "Maciej Król", "1.43", 2, "Prelekcja"],
+    ["14:00", "Polska edycja Bolt Action.", "Maciej Król", "1.43", 2, "Prelekcja"],
+    ["15:30", "The history of Lingo.", "Brenton Wildes", "1.43", 3, "Spotkanie z auotrem"],
+    ["16:00", "TBA", "", "1.43", 0, ""],
+    ["17:20", "Gry niezależne językowo - Czy to się opłaca?", "Paulina Michałowska", "1.43", 1, "Prelekcja"],
+    ["18:00", "Groza, która nie krzyczy. O pisaniu horroru przez milczenie.", "Aleks Boniewski", "1.43", 2, "Prelekcja"],
+    ["18:40", "Warsztat tłumacza a rosnąca rola AI - czy jest się czego bać?", "Jan Marcinkowski", "1.43", 3, "Prelekcja"],
+    ["19:20", "Czy przestanie się wydawać gry po polsku?", "Paulina Michałowska, Aleks Boniewski, Jan Marcinkowski", "1.43", 0, "Panel dyskusyjny"],
+    ["20:00", "Zakończenie wydarzenia.", "", "1.43", 0, ""]
   ]
 ];
 
@@ -99,27 +99,39 @@ const archive = [
 
 const tile = text => `<div class="ph">${text}</div>`;
 
-function day(i) {
-  $('#slots').innerHTML = days[i].map(s => `
-    <div class="slot">
-      <time class="mono">${s[0]}</time>
-      <div>
-        <h4>${s[1]}</h4>
-        <p>${s[2]}</p>
-      </div>
-      <span class="tag">${s[3]}</span>
-    </div>
-  `).join('');
-}
+const meta = (who, n) => (who || n) ? `
+  <div class="meta">
+    ${who ? `<span class="by">${who}</span>` : ''}
+    ${who && n ? '<span class="bar-sep" aria-hidden="true">|</span>' : ''}
+    ${n ? `<span class="lvl" role="img" aria-label="Trudność: ${n} z 5">
+      <span class="lbl">trudność:</span>
+      ${[1, 2, 3, 4, 5].map(i => `<span class="d${i <= n ? ' on' : ''}"></span>`).join('')}
+    </span>` : ''}
+  </div>` : '';
 
-document.querySelectorAll('.tabs button').forEach(button => {
-  button.onclick = () => {
-    document.querySelectorAll('.tabs button').forEach(other => {
-      other.setAttribute('aria-selected', other === button);
-    });
-    day(+button.dataset.day);
-  };
-});
+function day(i) {
+  $('#slots').innerHTML = days[i].map(s => {
+    const chips = [
+      s[5] ? `<span class="chip kind">${s[5]}</span>` : '',
+      s[2] ? `<span class="chip by">${s[2]}</span>` : '',
+      s[4] ? `<span class="chip lvl" role="img" aria-label="Trudność: ${s[4]} z 5">
+        Trudność
+        ${[1, 2, 3, 4, 5].map(j => `<span class="d${j <= s[4] ? ' on' : ''}"></span>`).join('')}
+      </span>` : ''
+    ].filter(Boolean).join('');
+
+    return `
+      <div class="slot">
+        <time class="mono">${s[0]}</time>
+        <div>
+          <h4>${s[1]}</h4>
+          ${chips ? `<div class="meta">${chips}</div>` : ''}
+        </div>
+        <span class="tag">${s[3]}</span>
+      </div>
+    `;
+  }).join('');
+}
 
 day(0);
 
